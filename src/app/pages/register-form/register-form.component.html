@@ -1,1 +1,131 @@
-<p>register-form works!</p>
+<form [formGroup]="formulario" (ngSubmit)="enviar()">
+
+    <div class="nombreCompletoContenedor">
+        <div class="campo">
+            <label for="nombreCompleto">Nombre completo</label>
+            <input id="nombreCompleto" type="text" formControlName="nombreCompleto" />
+
+            <div class="errores"
+                *ngIf="formulario.get('nombreCompleto')?.invalid && formulario.get('nombreCompleto')?.touched">
+                <small *ngIf="formulario.get('nombreCompleto')?.hasError('required')">
+                    El nombre completo es obligatorio
+                </small>
+                <small *ngIf="formulario.get('nombreCompleto')?.hasError('minlength')">
+                    Debe tener al menos 3 caracteres.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="correoElectronicoContenedor">
+        <div class="campo">
+            <label for="correoElectronico">Correo Electronico</label>
+            <input id="correoElectronico" type="text" formControlName="correoElectronico" />
+
+            <div class="errores"
+                *ngIf="formulario.get('correoElectronico')?.invalid && formulario.get('correoElectronico')?.touched">
+                <small *ngIf="formulario.get('correoElectronico')?.hasError('required')">
+                    El Correo Electrónico es obligatorio
+                </small>
+                <small *ngIf="formulario.get('correoElectronico')?.hasError('email')">
+                    Debe tener el arrroba para ser Correo Elctronico
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="nombreUsuarioContenedor">
+        <div class="campo">
+            <label for="nombreUsuario">Nombre de Usuario</label>
+            <input id="nombreUsuario" type="text" formControlName="nombreUsuario" />
+
+            <div class="errores"
+                *ngIf="formulario.get('nombreUsuario')?.invalid && formulario.get('nombreUsuario')?.touched">
+                <small *ngIf="formulario.get('nombreUsuario')?.hasError('required')">
+                    El Nombre de Usuario es obligatorio
+                </small>
+                <small *ngIf="formulario.get('nombreUsuario')?.hasError('pattern')">
+                    El Nombre de Usuario sólo debe contener letras, numeros y guion bajo
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="passwordContenedor">
+        <div class="campo">
+            <label for="password">Contraseña</label>
+            <input id="password" type="password" formControlName="password" />
+
+            <div class="errores" 
+                *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched">
+                <small *ngIf="formulario.get('password')?.hasError('required')">
+                    La Contraseña es obligatoria
+                </small>
+                <small *ngIf="formulario.get('password')?.hasError('minlength')">
+                    La Contraseña debe tener mínimo 8 caracteres
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="confirmarPasswordContenedor">
+        <div class="campo">
+            <label for="confirmarPassword">Confirmar Contraseña</label>
+            <input id="confirmarPassword" type="password" formControlName="confirmarPassword"/>
+
+            <div class="errores"
+                *ngIf="formulario.get('confirmarPassword')?.touched">
+                <small *ngIf="formulario.get('confirmarPassword')?.hasError('required')">
+                    Debes Confirmar la Contraseña
+                </small>
+                <small *ngIf="formulario.hasError('passwordNoCoinciden') && !formulario.get('confirmarPassword')?.hasError('required')">
+                    Las contraseñas no coinciden
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="edadContenedor">
+        <div class="campo">
+            <label for="edad">Edad</label>
+            <input id="edad" type="number" formControlName="edad"/>
+
+            <div class="errores"
+                *ngIf="formulario.get('edad')?.invalid && formulario.get('edad')?.touched">
+                <small *ngIf="formulario.get('edad')?.hasError('required')">
+                    La Edad es obligatoria
+                </small>
+                <small *ngIf="formulario.get('edad')?.hasError('min') || formulario.get('edad')?.hasError('max')">
+                    Debes tener entre 15 y 90 años
+                </small>
+            </div>
+        </div>
+    </div>
+       
+    <div class="terminosYCondicionesContenedor">
+        <div class="campo">
+            <label for="terminosYCondiciones">Termino y Condiciones</label>
+            <input id="terminosYCondiciones" type="checkbox" formControlName="terminosYCondiciones"/>
+
+            <div class="errores"
+                *ngIf="formulario.get('terminosYCondiciones')?.invalid && formulario.get('terminosYCondiciones')?.touched">
+                <small *ngIf="formulario.get('terminosYCondiciones')?.hasError('required')">
+                    Debes confirmar que has leído los Términos y Condiciones
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="formulario.invalid">
+        Registrarse
+    </button>
+
+</form>
+
+<div class="resumen" *ngIf="resumen">
+  <h3>Registro exitoso</h3>
+  <p><strong>Nombre:</strong> {{ resumen.nombreCompleto }}</p>
+  <p><strong>Correo:</strong> {{ resumen.correoElectronico }}</p>
+  <p><strong>Usuario:</strong> {{ resumen.nombreUsuario }}</p>
+  <p><strong>Edad:</strong> {{ resumen.edad }}</p>
+</div>

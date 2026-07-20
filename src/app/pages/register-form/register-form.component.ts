@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { coincidenPasswordValidator } from '../../validators/coinciden-password.validator';
 
 @Component({
   selector: 'app-register-form',
@@ -15,7 +16,27 @@ export class RegisterFormComponent {
     this.formulario = this.formBuilder.group({
       nombreCompleto: ['', [Validators.required, Validators.minLength(3)]],
       correoElectronico: ['', [Validators.required, Validators.email]],
-      nombreUsuario: ['', [Validators.required, Validators.pattern, Validators.pattern]]
-    })
+      nombreUsuario: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_]+$')]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmarPassword: ['', [Validators.required]],
+      edad: ['', [Validators.required, Validators.min(15), Validators.max(90)]],
+      terminosYCondiciones: [false, [Validators.requiredTrue]]
+    }, {
+      validators: coincidenPasswordValidator
+    });
   }
+
+  resumen: any | null;
+
+  enviar(): void {
+    if (this.formulario.invalid) {
+      return;
+    }
+
+    const { password, confirmarPassword, ...datosSinPassword } = this.formulario.value;
+    this.resumen = datosSinPassword;
+  }
+
+  
+
 }
