@@ -1,59 +1,40 @@
-# ReactiveForms
+# Formulario de Registro — Reactive Forms (Angular v19)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+Taller Front  — ADSO
+Formulario de registro de usuario construido con Angular Reactive Forms, validaciones integradas y un validador personalizado.
 
-## Development server
+## Características
 
-To start a local development server, run:
+- Formulario construido con `FormBuilder` y `FormGroup` (Reactive Forms, sin `ngModel`)
+- Validaciones por campo: nombre completo, correo, nombre de usuario, contraseña, edad y términos y condiciones
+- Validador personalizado que compara `password` y `confirmarPassword`
+- Mensajes de error específicos por campo, visibles solo tras interacción del usuario
+- Botón de envío deshabilitado mientras el formulario sea inválido
+- Resumen de los datos registrados al enviar (sin incluir la contraseña)
+- Requerimiento opcional implementado: mostrar/ocultar contraseña
+
+## Requisitos previos
+
+- Node.js (v18 o superior)
+- Angular CLI v19
+
+## Instalación
+
+```bash
+git clone 
+cd formulario-registro
+npm install
+```
+## Ejecución
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Si no tienes Angular CLI instalado globalmente, usa:
 
 ```bash
-ng generate component component-name
+npx ng serve
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Abre el navegador en `http://localhost:4200/`
