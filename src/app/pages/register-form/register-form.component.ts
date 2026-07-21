@@ -40,11 +40,11 @@ export class RegisterFormComponent {
   }
 
   toggleMostrarPassword(): void {
-    this.mostrarPassword = true;
+    this.mostrarPassword = !this.mostrarPassword;
   }
 
   toggleMostrarConfirmarPassword(): void {
-    this.mostrarConfirmarPassword = true;
+    this.mostrarConfirmarPassword = !this.mostrarConfirmarPassword;
   }
 
 }
