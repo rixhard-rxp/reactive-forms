@@ -27,6 +27,8 @@ export class RegisterFormComponent {
   }
 
   resumen: any | null;
+  mostrarPassword: boolean = false;
+  mostrarConfirmarPassword: boolean = false;
 
   enviar(): void {
     if (this.formulario.invalid) {
@@ -37,6 +39,12 @@ export class RegisterFormComponent {
     this.resumen = datosSinPassword;
   }
 
-  
+  toggleMostrarPassword(): void {
+    this.mostrarPassword = true;
+  }
+
+  toggleMostrarConfirmarPassword(): void {
+    this.mostrarConfirmarPassword = true;
+  }
 
 }
