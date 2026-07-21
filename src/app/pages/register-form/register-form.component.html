@@ -1,6 +1,7 @@
 <div class="container">
 
     <form [formGroup]="formulario" (ngSubmit)="enviar()">
+        <h1>Formulario de Registro</h1>
         <div class="nombreCompletoContenedor">
             <div class="campo">
                 <label for="nombreCompleto">Nombre completo</label>
@@ -132,11 +133,11 @@
     </form>
 
     <div class="resumen" *ngIf="resumen">
-        <h3>Registro exitoso</h3>
-        <p><strong>Nombre:</strong> {{ resumen.nombreCompleto }}</p>
-        <p><strong>Correo:</strong> {{ resumen.correoElectronico }}</p>
-        <p><strong>Usuario:</strong> {{ resumen.nombreUsuario }}</p>
-        <p><strong>Edad:</strong> {{ resumen.edad }}</p>
+        <h1>Registro exitoso</h1>
+        <p>Nombre: {{ resumen.nombreCompleto }}</p>
+        <p>Correo: {{ resumen.correoElectronico }}</p>
+        <p>Usuario: {{ resumen.nombreUsuario }}</p>
+        <p>Edad: {{ resumen.edad }}</p>
     </div>
 
 </div>
